@@ -304,7 +304,7 @@ private:
 		root->set_color(rb_color::black);
 	}
 
-	rb_node<Key, T> *__find(const Key k) const
+	rb_node<Key, T> *__find(const Key& k) const
 	{
 		auto n = root;
 
@@ -452,7 +452,7 @@ public:
 
 	rb_tree() : root(nullptr) {}
 
-	bool insert(const cul::pair<const Key, T>& vals)
+	bool insert(const cul::pair<const Key&, const T&>& vals)
 	{ 
 		auto& key = vals.first;
 
@@ -549,7 +549,7 @@ public:
 		return rb_tree_iterator{};
 	}
 
-	rb_tree_iterator find(const Key k) const
+	rb_tree_iterator find(const Key& k) const
 	{
 		auto node = __find(k);
 		if(!node)

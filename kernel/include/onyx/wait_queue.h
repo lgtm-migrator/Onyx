@@ -124,9 +124,9 @@ out_final:									\
 
 #define WAIT_QUEUE_INIT(x)			{.lock = {}, .token_list = LIST_HEAD_INIT(&x.token_list) };
 
-static inline void init_wait_queue_head(struct wait_queue *q)
+constexpr inline void init_wait_queue_head(struct wait_queue *q)
 {
-	memset(&q->lock, 0, sizeof(q->lock));
+	spinlock_init(&q->lock);
 	INIT_LIST_HEAD(&q->token_list);
 }
 

@@ -15,6 +15,7 @@
 #include <onyx/panic.h>
 #include <onyx/scoped_lock.h>
 #include <onyx/utility.hpp>
+#include <onyx/kunit.h>
 
 #include <libdict/rb_tree.h>
 
@@ -820,4 +821,11 @@ int vmo_truncate(vm_object *vmo, unsigned long size, unsigned long flags)
 	vmo->size = size;
 
 	return 0;
+}
+
+KTEST(VmObject, Truncate)
+{
+	printk("Hello World\n");
+
+	KUNIT_ASSERT_NEQ(get_current_thread()->owner, nullptr);
 }
